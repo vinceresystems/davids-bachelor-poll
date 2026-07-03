@@ -7,8 +7,8 @@
 <title>David's Bachelor — Fishing & Feast Adventure — Pick the Weekend</title>
 <meta property="og:type" content="website">
 <meta property="og:title" content="David's Bachelor 🎣 Fishing & Feast — Pick the Weekend">
-<meta property="og:description" content="Fishing + a seafood feast on the Maine coast to celebrate David. Tap your August weekends and what you can spend — nothing books till we lock the date. Answer by Fri, July 17.">
-<meta name="description" content="Fishing + a seafood feast on the Maine coast to celebrate David. Tap your August weekends and what you can spend — nothing books till we lock the date. Answer by Fri, July 17.">
+<meta property="og:description" content="Fishing + a seafood feast on the Maine coast to celebrate David. Tap the weekends that work and what you can spend — nothing books till we lock the date. Answer by Fri, July 17.">
+<meta name="description" content="Fishing + a seafood feast on the Maine coast to celebrate David. Tap the weekends that work and what you can spend — nothing books till we lock the date. Answer by Fri, July 17.">
 <style>
   :root{
     --ink:#0e2a33;          /* deep pine/ocean ink */
@@ -203,7 +203,7 @@
     <p class="sub">David's bachelor adventure on the Maine coast — a day out on the water fishing, then wreck a seafood-and-brewery feast by night. But nothing gets booked until we lock the date. That's on you. ⚓</p>
     <div class="ribbon">
       <span class="chip">🎣 Fishing + adventure</span>
-      <span class="chip">🗓️ August 2026</span>
+      <span class="chip">🗓️ Aug–Sep 2026</span>
       <span class="chip">💵 ~$250 / person</span>
       <span class="chip">🍺 Feast + brewery nights</span>
     </div>
@@ -228,7 +228,7 @@
       <input id="name" type="text" placeholder="Your name (e.g. Ben)" autocomplete="name" />
     </div>
 
-    <p class="field-label" style="margin-top:22px">Which August weekends can you make it?</p>
+    <p class="field-label" style="margin-top:22px">Which weekends can you make it?</p>
     <p class="muted" style="margin:-4px 0 14px">Tap <b>In</b>, <b>Maybe</b>, or <b>Out</b> for each. All are Fri→Sun (fly into Portland, PWM).</p>
     <div class="weekends" id="weekends"></div>
   </div>
@@ -265,10 +265,11 @@
   /* ============================== */
 
   var WEEKENDS = [
-    {id:"w1", big:"Aug 7 – 9",  small:"Fri · Sat · Sun"},
-    {id:"w2", big:"Aug 14 – 16", small:"Fri · Sat · Sun"},
+    {id:"w1", big:"Jul 31 – Aug 2", small:"Fri · Sat · Sun"},
+    {id:"w2", big:"Aug 7 – 9",  small:"Fri · Sat · Sun"},
     {id:"w3", big:"Aug 21 – 23", small:"Fri · Sat · Sun"},
-    {id:"w4", big:"Aug 28 – 30", small:"Fri · Sat · Sun"}
+    {id:"w4", big:"Aug 28 – 30", small:"Fri · Sat · Sun"},
+    {id:"w5", big:"Sep 4 – 6",  small:"Fri · Sat · Sun · Labor Day wknd"}
   ];
   var LABELS = {in:"✅ In", maybe:"🤔 Maybe", out:"🚫 Out"};
   var picks = {}; // id -> "in"|"maybe"|"out"
@@ -340,7 +341,7 @@
     var any = groups.in.length || groups.maybe.length || groups.out.length || budget;
     if(!any) return null;
     var who = name ? name : "(name)";
-    var lines = ["⚓ " + who + " — David's bachelor (Fishing & Feast), my August availability:"];
+    var lines = ["⚓ " + who + " — David's bachelor (Fishing & Feast), my availability:"];
     if(groups.in.length)    lines.push("✅ In: " + groups.in.join(", "));
     if(groups.maybe.length) lines.push("🤔 Maybe: " + groups.maybe.join(", "));
     if(groups.out.length)   lines.push("🚫 Can't: " + groups.out.join(", "));
