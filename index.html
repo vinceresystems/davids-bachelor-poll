@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b3c44">
+<title>David's Bachelor — Fishing & Feast Adventure — Pick the Weekend</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="David's Bachelor 🎣 Fishing & Feast — Pick the Weekend">
+<meta property="og:description" content="Fishing + a seafood feast on the Maine coast to celebrate David. Tap your August weekends and what you can spend — nothing books till we lock the date. Answer by Fri, July 17.">
+<meta name="description" content="Fishing + a seafood feast on the Maine coast to celebrate David. Tap your August weekends and what you can spend — nothing books till we lock the date. Answer by Fri, July 17.">
+<style>
+  :root{
+    --ink:#0e2a33;          /* deep pine/ocean ink */
+    --ink-soft:#274b54;
+    --sea:#0c5c63;          /* teal sea */
+    --sea-deep:#083b45;
+    --foam:#e9f4f2;
+    --paper:#f6efe0;        /* aged chart paper */
+    --paper-line:#e4d8bf;
+    --rope:#c98a3c;         /* rope / amber */
+    --rope-deep:#a5661f;
+    --coral:#c24b3a;
+    --coral2:#bd4436;
+    --gold:#e8b04b;
+    --good:#1f7a54;
+    --maybe:#b7801f;
+    --out:#a23b2e;
+    --shadow:rgba(8,30,36,.28);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(120% 90% at 50% -10%, #12545c 0%, #0b3c44 45%, #072a31 100%);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:20px 16px 64px}
+
+  /* ---- masthead ---- */
+  .plate{
+    position:relative;
+    background:linear-gradient(180deg,#0e454e,#0a343c);
+    border:2px solid rgba(232,176,75,.55);
+    border-radius:20px;
+    padding:30px 24px 26px;
+    text-align:center;
+    box-shadow:0 22px 50px -20px var(--shadow), inset 0 1px 0 rgba(255,255,255,.06);
+    overflow:hidden;
+  }
+  .plate::after{ /* faint chart grid */
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.10;
+    background-image:linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px);
+    background-size:26px 26px;
+  }
+  .kicker{
+    position:relative;color:var(--gold);font-size:12px;font-weight:800;
+    letter-spacing:.32em;text-transform:uppercase;margin:0 0 10px;
+  }
+  h1{
+    position:relative;margin:0;color:#fbf3e2;
+    font-size:clamp(31px,7vw,52px);line-height:.98;font-weight:900;
+    letter-spacing:-.5px;text-transform:uppercase;
+    text-shadow:0 2px 0 rgba(0,0,0,.25);
+  }
+  h1 .amp{color:var(--gold);font-style:italic;font-weight:800}
+  .sub{
+    position:relative;margin:12px auto 0;max-width:44ch;color:#cfe6e2;
+    font-size:15px;
+  }
+  .ribbon{
+    position:relative;display:inline-flex;gap:10px;flex-wrap:wrap;justify-content:center;
+    margin-top:16px;
+  }
+  .chip{
+    background:rgba(232,176,75,.14);border:1px solid rgba(232,176,75,.5);
+    color:#f4e6c8;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:700;
+    letter-spacing:.02em;
+  }
+  .tuna{position:relative;margin:18px auto 2px;display:block;filter:drop-shadow(0 6px 10px rgba(0,0,0,.3))}
+
+  /* ---- the ask ---- */
+  .card{
+    background:var(--paper);
+    background-image:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,0) 120px);
+    border-radius:18px;margin-top:18px;padding:24px 22px;
+    box-shadow:0 18px 40px -22px var(--shadow);
+    border:1px solid var(--paper-line);
+  }
+  .card h2{
+    margin:0 0 4px;font-size:13px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--rope-deep);font-weight:800;
+  }
+  .lead{margin:0 0 4px;font-size:22px;font-weight:800;color:var(--ink)}
+  .muted{color:var(--ink-soft);font-size:14.5px}
+
+  .crew{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .crew span{
+    background:#fff7e8;border:1px solid var(--paper-line);border-radius:10px;
+    padding:6px 11px;font-size:13.5px;font-weight:600;color:var(--ink-soft)
+  }
+  .crew span.you{background:var(--ink);color:#f6efe0;border-color:var(--ink)}
+  .crew span.groom{background:linear-gradient(180deg,var(--gold),var(--rope));color:#3a2408;border-color:var(--rope-deep);font-weight:800}
+
+  /* ---- weekend picker ---- */
+  .field-label{margin:0 0 10px;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--rope-deep);font-weight:800}
+  .name-row{margin-top:6px}
+  .name-row input{
+    width:100%;padding:14px 15px;border-radius:12px;border:1.5px solid var(--paper-line);
+    background:#fffdf7;font-size:16px;color:var(--ink);font-weight:600;
+  }
+  .name-row input:focus{outline:none;border-color:var(--rope);box-shadow:0 0 0 3px rgba(201,138,60,.2)}
+
+  .weekends{display:grid;grid-template-columns:1fr;gap:12px;margin-top:6px}
+  .wk{
+    background:#fffdf7;border:1.5px solid var(--paper-line);border-radius:14px;
+    padding:14px 15px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    transition:border-color .15s,box-shadow .15s,background .15s;
+  }
+  .wk.sel-in{border-color:var(--good);background:#f1faf3;box-shadow:0 0 0 2px rgba(31,122,84,.14)}
+  .wk.sel-maybe{border-color:var(--maybe);background:#fdf6e6;box-shadow:0 0 0 2px rgba(183,128,31,.14)}
+  .wk.sel-out{border-color:var(--out);background:#fbf0ee;box-shadow:0 0 0 2px rgba(162,59,46,.12)}
+  .wk .when{display:flex;flex-direction:column}
+  .wk .big{font-size:19px;font-weight:800;color:var(--ink);letter-spacing:-.2px}
+  .wk .small{font-size:12.5px;color:var(--ink-soft);font-weight:600}
+  .seg{display:inline-flex;background:#efe6d2;border-radius:11px;padding:4px;gap:4px}
+  .seg button{
+    border:0;background:transparent;cursor:pointer;font:inherit;font-weight:800;font-size:13px;
+    padding:8px 12px;border-radius:8px;color:var(--ink-soft);letter-spacing:.01em;transition:all .12s;
+    min-width:64px;
+  }
+  .seg button .ico{margin-right:5px}
+  .seg button[aria-pressed="true"][data-v="in"]{background:var(--good);color:#fff;box-shadow:0 4px 10px -4px rgba(31,122,84,.7)}
+  .seg button[aria-pressed="true"][data-v="maybe"]{background:var(--maybe);color:#fff;box-shadow:0 4px 10px -4px rgba(183,128,31,.7)}
+  .seg button[aria-pressed="true"][data-v="out"]{background:var(--out);color:#fff;box-shadow:0 4px 10px -4px rgba(162,59,46,.7)}
+
+  /* ---- budget tiers ---- */
+  .tiers{display:grid;grid-template-columns:1fr;gap:12px;margin-top:6px}
+  .tier{display:flex;flex-direction:column;position:relative;background:#fffdf7;border:1.5px solid var(--paper-line);
+    border-radius:14px;padding:15px 16px;cursor:pointer;transition:border-color .15s,box-shadow .15s,background .15s}
+  .tier:hover{border-color:var(--rope)}
+  .tier.sel{border-color:var(--rope-deep);background:#fff6e3;box-shadow:0 0 0 2px rgba(201,138,60,.25)}
+  .tier-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+  .tier-name{font-size:17px;font-weight:800;color:var(--ink)}
+  .tier-price{font-size:20px;font-weight:900;color:var(--rope-deep);letter-spacing:-.3px;white-space:nowrap}
+  .tier-price small{font-size:11px;font-weight:700;color:var(--ink-soft)}
+  .tier-detail{flex:1;margin-top:8px;font-size:13.5px;color:var(--ink-soft);line-height:1.45}
+  .tier-pick{display:none;align-self:flex-start;margin-top:10px;font-size:12px;font-weight:800;color:#fff;
+    background:var(--rope-deep);padding:4px 10px;border-radius:999px}
+  .tier.sel .tier-pick{display:inline-block}
+
+  /* ---- preview + actions ---- */
+  .preview{
+    margin-top:18px;background:var(--ink);color:#eaf5f2;border-radius:14px;padding:16px 17px;
+    font-size:14.5px;white-space:pre-wrap;word-break:break-word;min-height:56px;
+    border:1px solid rgba(255,255,255,.08);
+  }
+  .preview .ph{color:#7fa6ab}
+  .actions{display:grid;grid-template-columns:1fr;gap:10px;margin-top:14px}
+  .btn{
+    border:0;cursor:pointer;font:inherit;font-weight:800;font-size:15.5px;letter-spacing:.02em;
+    padding:15px 18px;border-radius:13px;text-align:center;text-decoration:none;display:block;
+    transition:transform .08s,box-shadow .15s,filter .15s;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:linear-gradient(180deg,var(--rope),var(--rope-deep));color:#fff;
+    box-shadow:0 12px 24px -12px rgba(165,102,31,.9)}
+  .btn-primary:hover{filter:brightness(1.04)}
+  .btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .btn-ghost{background:#fff7e8;color:var(--ink);border:1.5px solid var(--paper-line)}
+  .copied{color:var(--good);font-weight:800;font-size:13.5px;text-align:center;margin-top:10px;min-height:18px}
+
+  .foot{margin-top:22px;text-align:center;color:#bcdcd7;font-size:13px}
+  .foot b{color:#f0e3c4}
+  .rope-div{height:12px;margin:20px 0 0;background:
+     radial-gradient(circle at 6px 6px, var(--rope) 4px, transparent 5px) 0 0/12px 12px repeat-x;
+     opacity:.5}
+  @media(min-width:560px){
+    .weekends{grid-template-columns:1fr 1fr}
+    .tiers{grid-template-columns:repeat(3,1fr)}
+    .actions .btn-primary{grid-column:1 / -1}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="plate">
+    <p class="kicker">An adventure to celebrate David's engagement 💍</p>
+    <h1>Fishing <span class="amp">&amp;</span> Feast</h1>
+    <!-- bluefin tuna silhouette -->
+    <svg class="tuna" width="220" height="70" viewBox="0 0 220 70" aria-hidden="true">
+      <path fill="#e8b04b" d="M6 38c26-26 74-33 118-30 20 1 38 6 52 15 6-9 14-15 24-18-3 9-3 18 0 26-10-3-18-9-24-18-14 9-32 14-52 15-44 3-92-4-118-30z" opacity=".2"/>
+      <path fill="#f4e6c8" d="M12 37c30-22 78-27 116-24 19 1.5 36 6 49 14 5-7 12-12 21-15-2 7-2 15 0 22-9-3-16-8-21-15-13 8-30 12-49 14-38 3-86-2-116-24 5 9 5 19 0 28z"/>
+      <circle cx="44" cy="34" r="3.4" fill="#0a343c"/>
+      <path d="M150 24c8 3 15 8 20 13M150 50c8-3 15-8 20-13" stroke="#c98a3c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </svg>
+    <p class="sub">David's bachelor adventure on the Maine coast — a day out on the water fishing, then wreck a seafood-and-brewery feast by night. But nothing gets booked until we lock the date. That's on you. ⚓</p>
+    <div class="ribbon">
+      <span class="chip">🎣 Fishing + adventure</span>
+      <span class="chip">🗓️ August 2026</span>
+      <span class="chip">💵 ~$250 / person</span>
+      <span class="chip">🍺 Feast + brewery nights</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>The Crew</h2>
+    <p class="lead">Celebrating David 💍</p>
+    <div class="crew">
+      <span class="groom">David 🥂 the groom</span>
+      <span class="you">Michael F ⚓ best man</span>
+      <span class="you">Eli ⚓ best man</span>
+      <span>Michael Stephen</span><span>Michael Lu</span>
+      <span>Ben</span><span>Cedar</span><span>Stewart</span><span>Quentin</span>
+    </div>
+    <div class="rope-div"></div>
+  </div>
+
+  <div class="card">
+    <p class="field-label">First — who's answering?</p>
+    <div class="name-row">
+      <input id="name" type="text" placeholder="Your name (e.g. Ben)" autocomplete="name" />
+    </div>
+
+    <p class="field-label" style="margin-top:22px">Which August weekends can you make it?</p>
+    <p class="muted" style="margin:-4px 0 14px">Tap <b>In</b>, <b>Maybe</b>, or <b>Out</b> for each. All are Fri→Sun (fly into Portland, PWM).</p>
+    <div class="weekends" id="weekends"></div>
+  </div>
+
+  <div class="card">
+    <p class="field-label">💰 What can you comfortably spend?</p>
+    <p class="muted" style="margin:-4px 0 14px">Pick the <b>most</b> you're happy to chip in per person (excludes flights). This is a straight vote — <b>the more the group can swing, the better the charter boat and the nicer the cabins.</b> No wrong answer; we'll land on whatever works for everyone.</p>
+    <div class="tiers" id="tiers"></div>
+  </div>
+
+  <div class="card">
+    <p class="field-label">Your answer</p>
+    <div class="preview" id="preview"><span class="ph">Pick your weekends above and your text will build itself here…</span></div>
+    <div class="actions">
+      <button class="btn btn-primary" id="copyBtn">📋 Copy my answer</button>
+      <div class="btn-row">
+        <a class="btn btn-ghost" id="smsBtn" href="#">💬 Text it to Michael</a>
+        <a class="btn btn-ghost" id="mailBtn" href="#">✉️ Email instead</a>
+      </div>
+    </div>
+    <div class="copied" id="copied"></div>
+  </div>
+
+  <p class="foot">
+    Best men: <b>Michael</b> &amp; <b>Eli</b> · send replies to Michael F · (703) 628‑3637 · michael@headsuphockey.ai<br>
+    Please answer by <b>Fri, July 17</b> so we can call the outfitter and lock cabins. 🐟
+  </p>
+</div>
+
+<script>
+  /* ==== EDIT THESE IF NEEDED ==== */
+  var MICHAEL_PHONE = "+17036283637";               // where texts go
+  var MICHAEL_EMAIL = "michael@headsuphockey.ai";   // where emails go
+  /* ============================== */
+
+  var WEEKENDS = [
+    {id:"w1", big:"Aug 7 – 9",  small:"Fri · Sat · Sun"},
+    {id:"w2", big:"Aug 14 – 16", small:"Fri · Sat · Sun"},
+    {id:"w3", big:"Aug 21 – 23", small:"Fri · Sat · Sun"},
+    {id:"w4", big:"Aug 28 – 30", small:"Fri · Sat · Sun"}
+  ];
+  var LABELS = {in:"✅ In", maybe:"🤔 Maybe", out:"🚫 Out"};
+  var picks = {}; // id -> "in"|"maybe"|"out"
+
+  var wkWrap = document.getElementById("weekends");
+  WEEKENDS.forEach(function(w){
+    var row = document.createElement("div");
+    row.className = "wk"; row.id = "row-"+w.id;
+    row.innerHTML =
+      '<div class="when"><span class="big">'+w.big+'</span><span class="small">'+w.small+'</span></div>'+
+      '<div class="seg" role="group" aria-label="Availability for '+w.big+'">'+
+        '<button data-v="in" aria-pressed="false"><span class="ico">✅</span>In</button>'+
+        '<button data-v="maybe" aria-pressed="false"><span class="ico">🤔</span>Maybe</button>'+
+        '<button data-v="out" aria-pressed="false"><span class="ico">🚫</span>Out</button>'+
+      '</div>';
+    wkWrap.appendChild(row);
+    row.querySelectorAll(".seg button").forEach(function(b){
+      b.addEventListener("click", function(){
+        var v = b.getAttribute("data-v");
+        if(picks[w.id]===v){ delete picks[w.id]; } else { picks[w.id]=v; }
+        render();
+      });
+    });
+  });
+
+  /* ---- budget tiers (single choice: the most you'd chip in) ---- */
+  var TIERS = [
+    {id:"lean", name:"Keep it lean", price:"~$250", detail:"🎣 Shared / basic group charter · 🛏️ bunk-style cabin or campground · 🍳 cook most meals. The tier where everyone can come."},
+    {id:"mid",  name:"Solid middle", price:"~$400", detail:"🎣 Private charter just for the crew · 🛏️ comfy cabin, real beds · 🍽️ some meals cooked, some dinners out."},
+    {id:"send", name:"Send it",      price:"~$600+", detail:"🎣 Premium / bigger boat (or the overnight giant-fish run) · 🏡 sweet lakeside or coastal house · 🍽️ feasts out nightly, top-shelf all the way."}
+  ];
+  var budget = null; // selected tier id
+  var tiersWrap = document.getElementById("tiers");
+  TIERS.forEach(function(t){
+    var el = document.createElement("div");
+    el.className = "tier"; el.id = "tier-"+t.id;
+    el.innerHTML =
+      '<div class="tier-head"><span class="tier-name">'+t.name+'</span>'+
+      '<span class="tier-price">'+t.price+'<small>/pp</small></span></div>'+
+      '<div class="tier-detail">'+t.detail+'</div>'+
+      '<span class="tier-pick">✓ your pick</span>';
+    tiersWrap.appendChild(el);
+    el.addEventListener("click", function(){
+      budget = (budget===t.id) ? null : t.id;
+      renderTiers(); updatePreview();
+    });
+  });
+  function renderTiers(){
+    TIERS.forEach(function(t){
+      document.getElementById("tier-"+t.id).className = "tier" + (budget===t.id ? " sel" : "");
+    });
+  }
+
+  function render(){
+    WEEKENDS.forEach(function(w){
+      var row = document.getElementById("row-"+w.id);
+      row.className = "wk" + (picks[w.id] ? " sel-"+picks[w.id] : "");
+      row.querySelectorAll(".seg button").forEach(function(b){
+        b.setAttribute("aria-pressed", picks[w.id]===b.getAttribute("data-v") ? "true":"false");
+      });
+    });
+    updatePreview();
+  }
+
+  function buildMessage(){
+    var name = document.getElementById("name").value.trim();
+    var groups = {in:[], maybe:[], out:[]};
+    WEEKENDS.forEach(function(w){ if(picks[w.id]) groups[picks[w.id]].push(w.big); });
+    var any = groups.in.length || groups.maybe.length || groups.out.length || budget;
+    if(!any) return null;
+    var who = name ? name : "(name)";
+    var lines = ["⚓ " + who + " — David's bachelor (Fishing & Feast), my August availability:"];
+    if(groups.in.length)    lines.push("✅ In: " + groups.in.join(", "));
+    if(groups.maybe.length) lines.push("🤔 Maybe: " + groups.maybe.join(", "));
+    if(groups.out.length)   lines.push("🚫 Can't: " + groups.out.join(", "));
+    if(budget){
+      var bt=null; TIERS.forEach(function(x){ if(x.id===budget) bt=x; });
+      if(bt) lines.push("💰 Budget I can swing: " + bt.name + " (" + bt.price + "/pp)");
+    }
+    return lines.join("\n");
+  }
+
+  function updatePreview(){
+    var msg = buildMessage();
+    var pv = document.getElementById("preview");
+    if(!msg){ pv.innerHTML = '<span class="ph">Pick your weekends above and your text will build itself here…</span>'; }
+    else { pv.textContent = msg; }
+    var enc = encodeURIComponent(msg || "");
+    document.getElementById("smsBtn").setAttribute("href", "sms:"+MICHAEL_PHONE+"?&body="+enc);
+    document.getElementById("mailBtn").setAttribute("href",
+      "mailto:"+MICHAEL_EMAIL+"?subject="+encodeURIComponent("Bachelor dates")+"&body="+enc);
+  }
+
+  document.getElementById("name").addEventListener("input", updatePreview);
+
+  document.getElementById("copyBtn").addEventListener("click", function(){
+    var msg = buildMessage();
+    var note = document.getElementById("copied");
+    if(!msg){ note.textContent = "Make at least one pick first 👆"; return; }
+    var done = function(){ note.textContent = "Copied! Paste it into the group chat or text Michael. 🎣"; };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(msg).then(done, function(){ fallbackCopy(msg); done(); });
+    } else { fallbackCopy(msg); done(); }
+  });
+  function fallbackCopy(t){
+    var ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";
+    document.body.appendChild(ta);ta.focus();ta.select();
+    try{document.execCommand("copy");}catch(e){}
+    document.body.removeChild(ta);
+  }
+
+  ["smsBtn","mailBtn"].forEach(function(id){
+    document.getElementById(id).addEventListener("click", function(e){
+      if(!buildMessage()){ e.preventDefault(); document.getElementById("copied").textContent="Make at least one pick first 👆"; }
+    });
+  });
+
+  render();
+</script>
+</body>
+</html>
